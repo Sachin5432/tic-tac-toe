@@ -5,8 +5,9 @@
 # "CROSS" & "NAUGHT" have been assigned as the global variables for 
 # "X" & "Y" respectably 
 
-
 import enum
+import re
+from dataclasses import dataclass
 
 # we define the class as a string to make it easier to recall the values 
 # within the class since they're "X" & "Y"
@@ -26,3 +27,11 @@ class Mark(str, enum.Enum):
         # if self is CROSS it will assignt the other player to NAUGHT 
         # And vice versa
         return Mark.CROSS if self is Mark.NAUGHT else Mark.NAUGHT
+
+# Line 1 this will update for commit
+
+
+@dataclass (frozen=True):
+class Grid:
+    cells: str = " " * 9
+
