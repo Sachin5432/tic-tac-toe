@@ -30,8 +30,16 @@ class Mark(str, enum.Enum):
 
 # Line 1 this will update for commit
 
-
-@dataclass (frozen=True):
+#class to assigns grid size
+@dataclass (frozen=True)
 class Grid:
     cells: str = " " * 9
+    
+#private function to not allow entries that are not "X", "O" or space within the grid
+    def __post_init__(self) -> None:
+        if not re.match(r"[\sXO]{9}$", self.cells):
+            raise ValueError("Must contain 9 cells of: X, O, or space")
+
+    
+
 
